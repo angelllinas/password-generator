@@ -17,9 +17,12 @@ Including another URLconf
 from django.urls import path
 from generator import views
 
+from django.config import settings
+from django.config.urls.static import static
+
 urlpatterns = [
 #    path('admin/', admin.site.urls),
     path('about',views.about, name='about'),
     path('',views.home, name='home'),
     path('password',views.password, name='password')
-]
+]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
